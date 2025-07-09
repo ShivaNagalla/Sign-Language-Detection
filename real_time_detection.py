@@ -4,6 +4,8 @@ import mediapipe as mp
 import tensorflow as tf
 from collections import deque
 import os
+from tensorflow.keras.models import load_model
+
 
 
 class PositionalEncoding(tf.keras.layers.Layer):
@@ -12,7 +14,8 @@ class PositionalEncoding(tf.keras.layers.Layer):
         self.seq_len = seq_len
         self.d_model = d_model
 
-        # build (1, seq_len, d_model) sinusoidal table
+        # build (1
+        #, seq_len, d_model) sinusoidal table
         pos = np.arange(seq_len)[:, None]
         i   = np.arange(d_model)[None, :]
         angle_rates = 1 / np.power(10000., (2 * (i // 2)) / d_model)
@@ -50,8 +53,6 @@ LH_LEN = 21 * 3
 RH_LEN = 21 * 3
 LH_START = POSE_LEN + FACE_LEN
 RH_START = LH_START + LH_LEN
-
-from tensorflow.keras.models import load_model
 
 model = load_model(
     'asl_transformer_model.h5',
