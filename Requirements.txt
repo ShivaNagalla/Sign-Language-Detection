@@ -1,15 +1,12 @@
-# Your ASL pipeline
 numpy>=1.21.0
 opencv-python>=4.5.1.48
 mediapipe>=0.8.10
 tensorflow==2.19.0
 scikit-learn>=1.0.2
 
-# Fix for gensim
 FuzzyTM>=0.4.0
 
-# Upgrade protobuf for grpcio-* and opentelemetry-proto
-protobuf>=5.26.1,<6.0
+# Use a protobuf that satisfies both TF and MediaPipe
+protobuf>=3.20.3,<4.0.0
 
-# Downgrade tenacity for streamlit
 tenacity>=8.1.0,<9.0
